@@ -8,10 +8,9 @@ import { Button } from "react-native";
 import Slider from '@react-native-community/slider';
 import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
-import { useDebounce } from '@/hooks/useDebounce';
 import { debounce } from "lodash";
 
-const SERVER_URL = "http://192.168.15.10:3000"; 
+const SERVER_URL = "your-ip-here"; 
 
 export default function HomeScreen() {
   const [volume, setVolume] = useState(0);
@@ -70,11 +69,10 @@ export default function HomeScreen() {
 
         <ThemedText>Volume: {volume}%</ThemedText>
         <Slider
-          style={{ width: "100%", height: 40 }}
+          style={{ paddingVertical: 16 }}
           minimumValue={0}
           maximumValue={100}
           step={1}
-          value={volume}
           onValueChange={handleVolumeChange}
           minimumTrackTintColor="#1E90FF"
           maximumTrackTintColor="#D3D3D3"
