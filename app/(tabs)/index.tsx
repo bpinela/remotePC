@@ -1,18 +1,16 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { Button } from "react-native";
-import Slider from '@react-native-community/slider';
+import { Image, StyleSheet, Button } from 'react-native';
 import { useCallback, useEffect, useState } from 'react';
+import Slider from '@react-native-community/slider';
 import axios from 'axios';
 import { debounce } from "lodash";
+import { HelloWave } from '@/components/HelloWave';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+import ParallaxScrollView from '@/components/ParallaxScrollView';
 
 const SERVER_URL = "your-ip-here"; 
 
-export default function HomeScreen() {
+const HomeScreen = () => {
   const [volume, setVolume] = useState(0);
 
   useEffect(() => {
@@ -69,7 +67,7 @@ export default function HomeScreen() {
 
         <ThemedText>Volume: {volume}%</ThemedText>
         <Slider
-          style={{ paddingVertical: 16 }}
+          style={styles.slider}
           minimumValue={0}
           maximumValue={100}
           step={1}
@@ -101,4 +99,9 @@ const styles = StyleSheet.create({
     left: 0,
     position: 'absolute',
   },
+  slider: {
+    paddingVertical: 16
+  }
 });
+
+export default HomeScreen;
